@@ -1,6 +1,11 @@
 <script setup>
-defineProps({
-  products: Array,
+import { useStore } from 'vuex'
+import { computed } from 'vue'
+
+const store = useStore();
+
+const products = computed(() => {
+  return store.state.products;
 })
 </script>
 
