@@ -2,8 +2,10 @@
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 
+// equivalent of retrieving via this.$store
 const store = useStore();
 
+// access a state in computed function
 const products = computed(() => {
   return store.state.products;
 })
