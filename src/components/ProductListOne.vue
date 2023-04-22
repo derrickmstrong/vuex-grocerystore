@@ -7,7 +7,12 @@ const store = useStore();
 
 // access a state in computed function
 const products = computed(() => {
-  return store.state.products;
+    return store.state.products;
+})
+
+// access a getter in computed function
+const saleProducts = computed(() => {
+    return store.getters.saleProducts;
 })
 </script>
 
@@ -15,7 +20,7 @@ const products = computed(() => {
   <div id="product-list-one">
     <h2>Product List One</h2>
     <ul>
-        <li v-for="product in products" :key="product.name">
+        <li v-for="product in saleProducts" :key="product.name">
             <span class="name">{{ product.name}} </span>
             <span class="price">{{ product.price}} </span>
         </li>
