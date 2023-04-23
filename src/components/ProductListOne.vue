@@ -1,23 +1,31 @@
 <script setup>
-import { useStore } from 'vuex';
-import { computed } from 'vue';
+// import { useStore } from 'vuex';
+// import { computed } from 'vue';
+import { mapState, mapGetters, mapMutations, mapActions } from '../store/mapping'
 
 // equivalent of retrieving via this.$store
-const store = useStore();
+// const store = useStore();
 
 // access a state in computed function
-const products = computed(() => {
-  return store.state.products;
-});
+// const products = computed(() => {
+//   return store.state.products;
+// });
 
 // access a getter in computed function
-const saleProducts = computed(() => {
-  return store.getters.saleProducts;
-});
+// const saleProducts = computed(() => {
+//   return store.getters.saleProducts;
+// });
 
-const reducePrice = () => {
-  store.commit('reducePrice'); // fires off the reducePrice mutation
-};
+// const reducePrice = () => {
+//   return store.commit('setReducePrice'); // fires off the reducePrice mutation
+// };
+
+// mapping allows access to the entire VueX store eliminating all of the above code
+const { products } = mapState(); // currently not used in the v-for below
+const { saleProducts } = mapGetters(); // used in ProductListOne
+const { setReducePrice, setReducePriceByX } = mapMutations(); // used in ProductListOne
+const { asyncReducePriceByX } = mapActions(); // used in ProductListTwo
+
 </script>
 
 <template>
@@ -29,7 +37,7 @@ const reducePrice = () => {
         <span class="price">{{ product.price }} </span>
       </li>
     </ul>
-    <button class="product-list-btn" @click="reducePrice">Reduce Price</button>
+    <button class="product-list-btn" @click="setReducePrice">Reduce Price</button>
   </div>
 </template>
 

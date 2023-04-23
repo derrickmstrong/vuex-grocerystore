@@ -23,27 +23,27 @@ export const store = createStore({
   },
   // mutations - used to change the data in the store
   mutations: {
-    reducePrice: (state) => {
+    setReducePrice: (state) => {
       return state.products.forEach((product) => {
         return (product.price -= 1);
       });
     },
-    reducePriceByX: (state, payload) => {
+    setReducePriceByX: (state, payload) => {
       return state.products.forEach((product) => {
         if (product.price <= 0) {
-          product.price = 0;
+          return (product.price = 0);
         } else {
-          product.price -= payload;
+          return (product.price -= payload);
         }
       });
     }
   },
-  // actions - used to change the data asynchronously ie. async/await, axios, fetch, setTimeout
+  // actions - used to change the data in the store asynchronously ie. async/await, axios, fetch, setTimeout
   // can also be used to pass a payload to the mutation for dynamic params
   actions: {
-    reducePriceByX: (content, payload) => {
+    asyncReducePriceByX: (content, payload) => {
       setTimeout(() => {
-        content.commit('reducePriceByX', payload);
+        return content.commit('setReducePriceByX', payload); // runs the setReducePriceByX mutation
       }, 3000);
     }
   }

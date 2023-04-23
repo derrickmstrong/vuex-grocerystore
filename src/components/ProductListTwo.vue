@@ -5,19 +5,19 @@ import { useStore } from 'vuex';
 // equivalent of retrieving via this.$store
 const store = useStore();
 
-// access a state in computed function
+// access a state via the computed function
 const products = computed(() => {
   return store.state.products;
 });
 
-// access a getter in computed function
+// access a getter via the computed function
 const saleProducts = computed(() => {
   return store.getters.saleProducts;
 });
 
-// access an action
-const reducePriceByX = (amount) => {
-  store.dispatch('reducePriceByX', amount);
+// access an action with a payload
+const asyncReducePriceByX = (amount) => {
+  return store.dispatch('asyncReducePriceByX', amount);
 };
 </script>
 
@@ -30,7 +30,7 @@ const reducePriceByX = (amount) => {
         <span class="price">{{ product.price }} </span>
       </li>
     </ul>
-    <button class="product-list-btn" @click="reducePriceByX(5)">Reduce Price By X</button>
+    <button class="product-list-btn" @click="asyncReducePriceByX(5)">Reduce Price By X</button>
   </div>
 </template>
 
