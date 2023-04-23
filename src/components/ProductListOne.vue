@@ -1,7 +1,7 @@
 <script setup>
 // import { useStore } from 'vuex';
 // import { computed } from 'vue';
-import { mapState, mapGetters, mapMutations, mapActions } from '../store/mapping'
+import { mapState, mapGetters, mapMutations, mapActions } from '../store/mapping';
 
 // equivalent of retrieving via this.$store
 // const store = useStore();
@@ -16,8 +16,8 @@ import { mapState, mapGetters, mapMutations, mapActions } from '../store/mapping
 //   return store.getters.saleProducts;
 // });
 
-// const reducePrice = () => {
-//   return store.commit('setReducePrice'); // fires off the reducePrice mutation
+// const setReducePrice = () => {
+//   return store.commit('setReducePrice'); // fires off the setReducePrice mutation
 // };
 
 // mapping allows access to the entire VueX store eliminating all of the above code
@@ -25,7 +25,6 @@ const { products } = mapState(); // currently not used in the v-for below
 const { saleProducts } = mapGetters(); // used in ProductListOne
 const { setReducePrice, setReducePriceByX } = mapMutations(); // used in ProductListOne
 const { asyncReducePriceByX } = mapActions(); // used in ProductListTwo
-
 </script>
 
 <template>
