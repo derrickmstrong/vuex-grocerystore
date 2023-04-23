@@ -1,7 +1,6 @@
 <script setup>
-import ProductListOne from './ProductListOne.vue'
-import ProductListTwo from './ProductListTwo.vue'
-
+import ProductListOne from './ProductListOne.vue';
+import ProductListTwo from './ProductListTwo.vue';
 </script>
 
 <template>

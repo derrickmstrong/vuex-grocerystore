@@ -1,5 +1,5 @@
 <script setup>
-import MelsMarket from '../components/MelsMarket.vue'
+import MelsMarket from '../components/MelsMarket.vue';
 </script>
 
 <template>
