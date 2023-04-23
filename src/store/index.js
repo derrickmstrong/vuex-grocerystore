@@ -28,5 +28,23 @@ export const store = createStore({
                 return product.price -= 1;
             })
         },
+        reducePriceByX: (state, payload) => { 
+            return state.products.forEach(product => {
+                if (product.price <= 0) {
+                    product.price = 0;
+                } else {
+                    product.price -= payload;
+                }
+            })
+        },
+    },
+    // actions - used to change the data asynchronously ie. async/await, axios, fetch, setTimeout
+    // can also be used to pass a payload to the mutation for dynamic params
+    actions:  {
+        reducePriceByX: (content, payload) => {
+            setTimeout(() => {
+                content.commit('reducePriceByX', payload);
+            }, 3000);
+        }
     }
 })

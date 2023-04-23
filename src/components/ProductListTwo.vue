@@ -14,6 +14,11 @@ const products = computed(() => {
 const saleProducts = computed(() => {
     return store.getters.saleProducts;
 })
+
+// access an action
+const reducePriceByX = (amount) => {
+    store.dispatch('reducePriceByX', amount)
+}
 </script>
 
 <template>
@@ -25,6 +30,7 @@ const saleProducts = computed(() => {
             <span class="price">{{ product.price}} </span>
         </li>
     </ul>
+    <button class="product-list-btn" @click="reducePriceByX(5)">Reduce Price By X</button>
   </div>
 </template>
 
@@ -52,5 +58,15 @@ const saleProducts = computed(() => {
     font-weight: bold;
     color: #0c31e8;
     display: block;
+}
+.product-list-btn {
+    background-color: turquoise;
+    color: teal;
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 2px;
 }
 </style>
