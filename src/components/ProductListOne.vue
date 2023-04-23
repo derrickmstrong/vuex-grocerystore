@@ -14,6 +14,10 @@ const products = computed(() => {
 const saleProducts = computed(() => {
     return store.getters.saleProducts;
 })
+
+const reducePrice = () => { 
+    store.commit('reducePrice'); // fires off the reducePrice mutation
+}
 </script>
 
 <template>
@@ -25,6 +29,7 @@ const saleProducts = computed(() => {
             <span class="price">{{ product.price}} </span>
         </li>
     </ul>
+    <button class="product-list-btn" @click="reducePrice">Reduce Price</button>
   </div>
 </template>
 
@@ -48,10 +53,18 @@ const saleProducts = computed(() => {
     padding: 20px;
     background: rgba(255,255,255,0.7);
 }
-
 .name, .price{
     font-weight: bold;
     color: plum;
     margin-right: .5rem;
+}
+.product-list-btn {
+    background-color: orange;
+    width: 100px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 2px;
 }
 </style>
