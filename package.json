@@ -10,6 +10,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "secure-ls": "^1.2.6",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "vuex": "^4.0.2",

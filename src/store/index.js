@@ -1,5 +1,8 @@
 import { createStore } from 'vuex';
 import VuexPersistence from 'vuex-persist';
+import SecureLS from "secure-ls";
+
+const ls = new SecureLS({ isCompression: false });
 
 export const store = createStore({
   // state - global reference to state throughout the app
@@ -48,5 +51,13 @@ export const store = createStore({
       }, 3000);
     }
   },
-  plugins: [new VuexPersistence().plugin]
+  plugins: [
+    new VuexPersistence({
+      storage: {
+        getItem: (key) => ls.get(key),
+        setItem: (key, value) => ls.set(key, value),
+        removeItem: (key) => ls.remove(key)
+      }
+    }).plugin
+  ]
 });
