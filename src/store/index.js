@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import VuexPersistence from 'vuex-persist';
 
 export const store = createStore({
   // state - global reference to state throughout the app
@@ -46,5 +47,6 @@ export const store = createStore({
         return content.commit('setReducePriceByX', payload); // runs the setReducePriceByX mutation
       }, 3000);
     }
-  }
+  },
+  plugins: [new VuexPersistence().plugin]
 });
